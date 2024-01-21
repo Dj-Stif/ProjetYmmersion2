@@ -4,12 +4,14 @@ import (
 	"ProjetYmmersion2/data"
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
 )
 
 var Aventurier []data.Aventurier
+var err error
 
 func GetDataFromJson() {
 	data, err := os.ReadFile("data/data.json") //ouverture et lecture du json
@@ -35,7 +37,7 @@ func SubmitHandler(w http.ResponseWriter, r *http.Request) {
 		handForm = true
 	}
 
-	dataForm := data.Aventurier{r.FormValue("lastname"), r.FormValue("firstname"), ageForm, handForm}
+	dataForm := data.Aventurier{r.FormValue("lastname"), r.FormValue("firstname"), ageForm, handForm, CallId()}
 
 	dataFile, errFile := os.ReadFile("./data/fichier.json")
 	if errFile != nil {
@@ -93,4 +95,45 @@ func EditJson(ModifiedArticle []data.Aventurier) {
 		fmt.Println("Erreur lors de la modification du fichier fichier.json", err)
 		return
 	}
+}
+
+func CallId() int {
+	var Id = rand.Intn(50)
+
+	for _, c := range ListAventurier {
+		if c.Id == Id {
+			return CallId()
+		}
+	}
+	return Id
+}
+
+func TreatmentModif(w http.ResponseWriter, r *http.Request) {
+	var c int
+	ListAventurier, err = ReadJson()
+	if err != nil {
+		fmt.Println("erreur", err)
+		return
+	}
+
+	for _, t := range ListAventurier {
+		if t.Id == Id {
+			data.Player.LastName = r.FormValue("LastName")
+			data.Player.FirstName = r.FormValue("FirstName")
+			data.Player.Age, err = strconv.Atoi(r.FormValue("age"))
+			if err != nil {
+				fmt.Println("erreur", err)
+				return
+			}
+			if r.FormValue("hand") == "right" {
+				data.Player.Hand = true
+			} else {
+				data.Player.Hand = false
+			}
+		}
+		c++
+	}
+	ListAventurier[c] = data.Player
+	EditJson(ListAventurier)
+	http.Redirect(w, r, "/perso", http.StatusMovedPermanently)
 }

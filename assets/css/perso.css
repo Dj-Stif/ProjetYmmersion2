@@ -1,0 +1,38 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(../image/planisphèremonde.jpg);
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.character {
+    background: none;
+    box-shadow: 3px 3px 3px black;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.character-info {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.character-info label {
+    font-weight: bold;
+    color: #333;
+}
+
+.character-info span {
+    color: #666;
+}

@@ -10,9 +10,11 @@ import (
 func InitServ() {
 	http.HandleFunc("/", controller.Index)
 	http.HandleFunc("/perso", controller.Perso)
-	http.HandleFunc("/modifsuppr", controller.ModifSuppr)
+	http.HandleFunc("/modif", controller.Modif)
+	http.HandleFunc("/suppr", controller.Suppr)
 	http.HandleFunc("/ajout", controller.Ajout)
 	http.HandleFunc("/submit", controller.SubmitHandler)
+	http.HandleFunc("/treatmentmodif", controller.TreatmentModif)
 
 	rootDoc, _ := os.Getwd()
 	FileServ := http.FileServer(http.Dir(rootDoc + "/assets"))
