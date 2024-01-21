@@ -10,15 +10,30 @@
 </head>
 
 <body>
-    <div class="character">
+    <section>
         {{range .}}
-        <a href="/modif?Id={{.Id}}"></a>
-        {{.LastName}}
-        {{.FirstName}}
-        {{.Age}}
-        {{.Hand}}
+        <div class="character">
+            <div class="info">
+                <p>Nom : {{.LastName}}
+                    Prénom : {{.FirstName}} <br>
+                    Age : {{.Age}}
+                    {{if .Hand}}
+                    Main Dominante : Droite
+                    {{else}}
+                    Main dominante : Gauche
+                    {{end}}</p>
+            </div>
+
+            <div class="lien">
+                <a href="/modif?id={{.Id}}" class="modif">Modifier</a>
+                <a href="/suppr?id={{.Id}}" class="suppr">Supprimer</a>
+            </div>
+        </div>
         {{end}}
-    </div>
+        <div class="create">
+            <a href="/ajout" class="build">Créer</a>
+        </div>
+    </section>
 
 </body>
 

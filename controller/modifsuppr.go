@@ -13,7 +13,7 @@ var Id int
 func Modif(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil {
-		fmt.Println("erreur")
+		fmt.Println("erreur modif")
 	}
 	for _, t := range ListAventurier {
 		if t.Id == Id {
@@ -27,5 +27,21 @@ func Modif(w http.ResponseWriter, r *http.Request) {
 }
 
 func Suppr(w http.ResponseWriter, r *http.Request) {
+	ListAventurier, err = ReadJson()
+	if err != nil {
+		fmt.Println("erreur suppr", err)
+		return
+	}
+	id, err := strconv.Atoi(r.URL.Query().Get("id"))
+	if err != nil {
+		fmt.Println("erreur modif")
+	}
+	for i, c := range ListAventurier {
+		if c.Id == id {
+			ListAventurier = append(ListAventurier[:i], ListAventurier[i+1:]...)
+		}
+	}
+	EditJson(ListAventurier)
+
 	http.Redirect(w, r, "/perso", http.StatusMovedPermanently)
 }

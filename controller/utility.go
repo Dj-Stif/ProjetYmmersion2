@@ -67,12 +67,12 @@ func SubmitHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	http.Redirect(w, r, "/ajout", http.StatusMovedPermanently)
+	http.Redirect(w, r, "/perso", http.StatusMovedPermanently)
 
 }
 
 func ReadJson() ([]data.Aventurier, error) {
-	jsonFile, err := os.ReadFile("Chemin vers le JSON")
+	jsonFile, err := os.ReadFile("data/fichier.json")
 	if err != nil {
 		fmt.Println("Error reading", err.Error())
 	}
@@ -90,7 +90,7 @@ func EditJson(ModifiedArticle []data.Aventurier) {
 		return
 	}
 
-	err := os.WriteFile("Chemin vers le JSON", modifiedJson, 0644)
+	err := os.WriteFile("data/fichier.json", modifiedJson, 0644)
 	if err != nil {
 		fmt.Println("Erreur lors de la modification du fichier fichier.json", err)
 		return
@@ -112,7 +112,7 @@ func TreatmentModif(w http.ResponseWriter, r *http.Request) {
 	var c int
 	ListAventurier, err = ReadJson()
 	if err != nil {
-		fmt.Println("erreur", err)
+		fmt.Println("erreur treatmentmodif", err)
 		return
 	}
 
@@ -130,6 +130,7 @@ func TreatmentModif(w http.ResponseWriter, r *http.Request) {
 			} else {
 				data.Player.Hand = false
 			}
+			break
 		}
 		c++
 	}

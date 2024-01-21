@@ -52,7 +52,7 @@ input[type="radio"] {
 }
 
 input[type="submit"] {
-    background-color: white;
+    background-color: green;
     color: black;
     padding: 12px;
     border: none;
@@ -64,5 +64,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: gray;
+    background-color: white;
 }

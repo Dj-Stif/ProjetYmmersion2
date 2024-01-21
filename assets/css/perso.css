@@ -11,28 +11,98 @@ body {
 }
 
 .character {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    text-align: center;
+    backdrop-filter: blur(4px);
+    border: 1px solid black;
     background: none;
-    box-shadow: 3px 3px 3px black;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px black(0, 0, 0, 0.1);
     overflow: hidden;
     width: 400px;
     max-width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.info {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
 }
 
 .character-info {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .character-info label {
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
 }
 
 .character-info span {
-    color: #666;
+    color: #ffffff;
+}
+
+.lien {
+    display: flex;
+    margin-right: 10px;
+}
+
+.modif {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+
+.modif:hover {
+    color: #45a049;
+}
+
+.suppr {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-decoration: none;
+    color: red;
+    font-weight: bold;
+}
+
+.suppr:hover {
+    color: rgb(109, 0, 0);
+}
+
+.create {
+    display: flex;
+    justify-content: center;
+}
+
+.build {
+    display: block;
+    margin-top: 20px;
+    font-size: 30px;
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+
+.build:hover {
+    color: turquoise;
 }

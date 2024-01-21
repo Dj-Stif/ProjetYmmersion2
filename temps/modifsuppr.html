@@ -8,21 +8,21 @@
     <link rel="stylesheet" href="../static/css/modifsuppr.css">
 </head>
 <body>
-    <form id="myForm" action="/submit" method="post">
+    <form id="myForm" action="/treatmentmodif" method="post">
         <div class="form-example">
-            <label for="lastname">Enter your last name: </label>
-            <input type="text" name="lastname" id="lastname" required />
+            <label for="LastName">Enter your last name: </label>
+            <input type="text" name="LastName" id="lastname" value={{.LastName}} required />
         </div>
         <div class="form-example">
-            <label for="firstname">Enter your first name: </label>
-            <input type="text" name="firstname" id="firstname" required />
+            <label for="FirstName">Enter your first name: </label>
+            <input type="text" name="FirstName" id="firstname" value={{.FirstName}} required />
         </div>
         <div class="form-example">
             <label for="quantity">Age:</label>
-            <input type="number" id="age" name="age" min="1" max="99">
+            <input type="number" id="age" name="age" min="1" max="99" value={{.Age}}>
         </div>
         <div class="form-example">
-            <p>Please select best hand:</p>
+            <label for="hand">Please select your best hand :</label>
             <input type="radio" id="right" name="hand" value="right">
             <label for="right">right</label><br>
             <input type="radio" id="left" name="hand" value="left">
